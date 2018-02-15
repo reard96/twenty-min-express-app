@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>People</title>
+</head>
+<body>
+  <form method='POST' action='/'>
+    <input name='firstName' />
+    <button>Create One</button>
+  </form>
+  <ul>
+  {% for person in people %}
+  <li>
+    <form method='POST' action='/{{person.id}}?_method=PUT'>
+      <input name='firstName' value='{{ person.firstName }}' />
+      <button>Update</button>
+    </form>
+    <form method='POST' action='/{{person.id}}?_method=DELETE'>
+      <button>Delete this person</button>
+    </form>
+  </li>
+  {% endfor %}
+  </ul>
+</body>
+</html>
